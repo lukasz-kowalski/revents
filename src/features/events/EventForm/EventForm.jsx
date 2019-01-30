@@ -22,11 +22,11 @@ export default class EventForm extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.selectedEvent !== nextProps.selectedEvent) {
-      this.setState(() => ({
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.selectedEvent !== nextProps.selectedEvent) {
+      return ({
         event: nextProps.selectedEvent || emptyEvent
-      }))
+      })
     }
   }
 
@@ -39,8 +39,9 @@ export default class EventForm extends React.Component {
   }
 
   onFormSubmit = event => {
+    const evt = this.state.event
     event.preventDefault()
-    this.state.event.id ? this.props.updateEvent(this.state.event) : this.props.createEvent(this.state.event)
+    evt.id ? this.props.updateEvent(evt) : this.props.createEvent(evt)
   }
 
   render() {
