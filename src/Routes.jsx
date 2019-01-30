@@ -9,6 +9,18 @@ import UserDetailed from './features/user/UserDetailed/UserDetailedPage'
 import SettingsDashboard from './features/user/Settings/SettingsDashboard'
 import EventForm from './features/events/EventForm/EventForm'
 import NavBar from './features/nav/NavBar/NavBar'
+import BasicPage from './features/user/Settings/BasicPage'
+import AboutPage from './features/user/Settings/AboutPage'
+import PhotosPage from './features/user/Settings/PhotosPage'
+import AccountPage from './features/user/Settings/AccountPage'
+
+const wrapInSettingsDashboard = Screen => props => {
+  console.log(Screen)
+  console.log(props)
+  return (<SettingsDashboard>
+  <Screen {...props} />
+  </SettingsDashboard>);
+}
 
 const Routes = () => (
   <BrowserRouter>
@@ -27,7 +39,11 @@ const Routes = () => (
               <Route path='/people' component={PeopleDashboard} />
               <Route path='/profile/:id' component={UserDetailed} />
               <Route path='/createevent' component={EventForm} />
-              <Route path='/settings' component={SettingsDashboard} />
+              <Route path='/settings' component={SettingsDashboard} exact />
+              <Route path='/settings/basic' render={wrapInSettingsDashboard(BasicPage)} />
+              <Route path='/settings/about' render={wrapInSettingsDashboard(AboutPage)} />
+              <Route path='/settings/photos' render={wrapInSettingsDashboard(PhotosPage)} />
+              <Route path='/settings/account' render={wrapInSettingsDashboard(AccountPage)} />
             </Switch>
           </Container>
         </React.Fragment>
