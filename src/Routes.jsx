@@ -13,10 +13,9 @@ import BasicPage from './features/user/Settings/BasicPage'
 import AboutPage from './features/user/Settings/AboutPage'
 import PhotosPage from './features/user/Settings/PhotosPage'
 import AccountPage from './features/user/Settings/AccountPage'
+import TestComponent from './features/testarea/TestComponent'
 
 const wrapInSettingsDashboard = Screen => props => {
-  console.log(Screen)
-  console.log(props)
   return (<SettingsDashboard>
   <Screen {...props} />
   </SettingsDashboard>);
@@ -44,6 +43,7 @@ const Routes = () => (
               <Route path='/settings/about' render={wrapInSettingsDashboard(AboutPage)} />
               <Route path='/settings/photos' render={wrapInSettingsDashboard(PhotosPage)} />
               <Route path='/settings/account' render={wrapInSettingsDashboard(AccountPage)} />
+              <Route path='/testarea' component={TestComponent} />
             </Switch>
           </Container>
         </React.Fragment>
