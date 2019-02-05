@@ -1,33 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import cuid from 'cuid'
 import { Segment, Form, Button } from 'semantic-ui-react'
+import { createEvent, updateEvent } from '../eventActions'
 
-const emptyEvent = {
-  title: '',
-  date: '',
-  city: '',
-  venue: '',
-  hostedBy: ''
-}
-
-export default class EventForm extends React.Component {
+class EventForm extends React.Component {
   state = {
-    event: emptyEvent
-  }
-
-  componentDidMount() {
-    if (this.props.selectedEvent !== null) {
-      this.setState(() => ({
-        event: this.props.selectedEvent
-      }))
-    }
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.selectedEvent !== nextProps.selectedEvent) {
-      return ({
-        event: nextProps.selectedEvent || emptyEvent
-      })
-    }
+    event: { ...this.props.event }
   }
 
   onInputChange = event => {
@@ -39,13 +18,23 @@ export default class EventForm extends React.Component {
   }
 
   onFormSubmit = event => {
-    const evt = this.state.event
     event.preventDefault()
-    evt.id ? this.props.updateEvent(evt) : this.props.createEvent(evt)
+    const evt = this.state.event
+    if (evt.id) {
+      this.props.updateEvent(evt)
+      this.props.history.goBack()
+    } else {
+      const newEvent = {
+        ...evt,
+        id: cuid(),
+        hostPhotoURL: '/assets/user.png'
+      }
+      this.props.createEvent(newEvent)
+      this.props.history.push('/events')
+    }
   }
 
   render() {
-    const { handleCancel } = this.props
     const { event } = this.state
     return (
       <Segment>
@@ -71,9 +60,34 @@ export default class EventForm extends React.Component {
             <input onChange={this.onInputChange} name="hostedBy" value={event.hostedBy} placeholder="Enter the name of person hosting" />
           </Form.Field>
           <Button positive type="submit">Submit</Button>
-          <Button type="button" onClick={handleCancel}>Cancel</Button>
+          <Button type="button" onClick={this.props.history.goBack}>Cancel</Button>
         </Form>
       </Segment>
     )
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  const eventId = ownProps.match.params.id
+
+  let event = {
+    title: '',
+    date: '',
+    city: '',
+    venue: '',
+    hostedBy: ''
+  }
+
+  if (eventId && state.events.length > 0) {
+    event = state.events.filter(event => event.id === eventId)[0]
+  }
+
+  return { event }
+}
+
+const mapDispatchToProps = (dispatch, actions) => ({
+  createEvent: event => dispatch(createEvent(event)),
+  updateEvent: event => dispatch(updateEvent(event))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventForm)

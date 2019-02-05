@@ -1,12 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Segment, Item, Icon, Button, List } from 'semantic-ui-react'
 import EventListAttendee from './EventListAttendee'
 
 export default class EventListItem extends React.Component {
-  handleClick = () => {
-    this.props.onEventOpen(this.props.event)
-  }
-
   handleDeleteEvent = () => {
     this.props.deleteEvent(this.props.event.id)
   }
@@ -41,7 +38,7 @@ export default class EventListItem extends React.Component {
         </Segment>
         <Segment clearing>
           <span>{event.description}</span>
-          <Button onClick={this.handleClick} as="a" color="teal" floated="right" content="View" />
+          <Button as={Link} to={`/event/${event.id}`} color="teal" floated="right" content="View" />
           <Button onClick={this.handleDeleteEvent} as="a" color="red" floated="right" content="Delete" />
         </Segment>
       </Segment.Group>

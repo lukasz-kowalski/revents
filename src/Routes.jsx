@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
+import ScrollToTop from './app/common/util/ScrollToTop'
 import HomePage from './features/home/HomePage'
 import EventDashboard from './features/events/EventDashboard/EventDashboard'
 import EventDetailedPage from './features/events/EventDetailed/EventDetailedPage'
@@ -25,7 +26,9 @@ const Routes = () => (
   <BrowserRouter>
     <React.Fragment>
       <Switch>
-        <Route path='/' component={HomePage} exact />
+        <ScrollToTop>
+          <Route path='/' component={HomePage} exact />
+        </ScrollToTop>
       </Switch>
 
       <Route path='/(.+)' render={() => (
@@ -33,17 +36,20 @@ const Routes = () => (
           <NavBar />
           <Container className="main">
             <Switch>
-              <Route path='/events' component={EventDashboard} />
-              <Route path='/event/:id' component={EventDetailedPage} />
-              <Route path='/people' component={PeopleDashboard} />
-              <Route path='/profile/:id' component={UserDetailed} />
-              <Route path='/createevent' component={EventForm} />
-              <Route path='/settings' component={SettingsDashboard} exact />
-              <Route path='/settings/basic' render={wrapInSettingsDashboard(BasicPage)} />
-              <Route path='/settings/about' render={wrapInSettingsDashboard(AboutPage)} />
-              <Route path='/settings/photos' render={wrapInSettingsDashboard(PhotosPage)} />
-              <Route path='/settings/account' render={wrapInSettingsDashboard(AccountPage)} />
-              <Route path='/testarea' component={TestComponent} />
+              <ScrollToTop>
+                <Route path='/events' component={EventDashboard} />
+                <Route path='/event/:id' component={EventDetailedPage} />
+                <Route path='/manage/:id' component={EventForm} />
+                <Route path='/people' component={PeopleDashboard} />
+                <Route path='/profile/:id' component={UserDetailed} />
+                <Route path='/createevent' component={EventForm} />
+                <Route path='/settings' component={SettingsDashboard} exact />
+                <Route path='/settings/basic' render={wrapInSettingsDashboard(BasicPage)} />
+                <Route path='/settings/about' render={wrapInSettingsDashboard(AboutPage)} />
+                <Route path='/settings/photos' render={wrapInSettingsDashboard(PhotosPage)} />
+                <Route path='/settings/account' render={wrapInSettingsDashboard(AccountPage)} />
+                <Route path='/testarea' component={TestComponent} />
+              </ScrollToTop>
             </Switch>
           </Container>
         </React.Fragment>
