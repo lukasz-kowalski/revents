@@ -7,6 +7,10 @@ const initialState = [
     description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in officia eaque ab vel, minus fuga voluptate asperiores veritatis numquam!',
     city: 'London, UK',
     venue: "Tower of London, St Katherine's & Wapping, London",
+    venueLatLng: {
+      lat: 40.7484405,
+      lng: -73.98566440000002
+    },
     hostedBy: 'Bob',
     hostedPhotoURL: 'https://randomuser.me/api/portraits/men/20.jpg',
     attendees: [
@@ -30,6 +34,10 @@ const initialState = [
     description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in officia eaque ab vel, minus fuga voluptate asperiores veritatis numquam!',
     city: 'London, UK',
     venue: "Tower of London, St Katherine's & Wapping, London",
+    venueLatLng: {
+      lat: 40.7484405,
+      lng: -73.98566440000002
+    },
     hostedBy: 'Bob',
     hostedPhotoURL: 'https://randomuser.me/api/portraits/men/20.jpg',
     attendees: [

@@ -48,7 +48,7 @@ const Routes = () => (
                 <Route path='/settings/about' render={wrapInSettingsDashboard(AboutPage)} />
                 <Route path='/settings/photos' render={wrapInSettingsDashboard(PhotosPage)} />
                 <Route path='/settings/account' render={wrapInSettingsDashboard(AccountPage)} />
-                <Route path='/testarea' component={TestComponent} />
+                <Route path='/test' component={TestComponent} />
               </ScrollToTop>
             </Switch>
           </Container>
