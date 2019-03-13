@@ -15,6 +15,7 @@ import AboutPage from './features/user/Settings/AboutPage'
 import PhotosPage from './features/user/Settings/PhotosPage'
 import AccountPage from './features/user/Settings/AccountPage'
 import TestComponent from './features/testarea/TestComponent'
+import ModalManager from './features/modals/ModalManager'
 
 const wrapInSettingsDashboard = Screen => props => {
   return (<SettingsDashboard>
@@ -25,6 +26,7 @@ const wrapInSettingsDashboard = Screen => props => {
 const Routes = () => (
   <BrowserRouter>
     <React.Fragment>
+      <ModalManager />
       <Switch>
         <ScrollToTop>
           <Route path='/' component={HomePage} exact />
