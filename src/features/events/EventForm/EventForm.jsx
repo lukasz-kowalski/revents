@@ -14,7 +14,7 @@ import TextArea from '../../../app/common/form/TextArea'
 import DateInput from '../../../app/common/form/DateInput'
 import PlaceInput from '../../../app/common/form/PlaceInput'
 import { Segment, Form, Button, Grid, Header } from 'semantic-ui-react'
-import { createEvent, updateEvent } from '../eventActions'
+import { startCreatingEvent, startUpdateEvent } from '../eventActions'
 
 const category = [
   { key: 'drinks', text: 'Drinks', value: 'drinks'},
@@ -68,7 +68,7 @@ class EventForm extends React.Component {
     values.date = moment(values.date).format()
     values.venueLatLng = this.state.venueLatLng
     if (this.props.initialValues.id) {
-      this.props.updateEvent(values)
+      this.props.startUpdateEvent(values)
       this.props.history.goBack()
     } else {
       const newEvent = {
@@ -77,7 +77,7 @@ class EventForm extends React.Component {
         hostPhotoURL: '/assets/user.png',
         hostedBy: 'Bob'
       }
-      this.props.createEvent(newEvent)
+      this.props.startCreatingEvent(newEvent)
       this.props.history.push('/events')
     }
   }
@@ -127,8 +127,8 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, actions) => ({
-  createEvent: event => dispatch(createEvent(event)),
-  updateEvent: event => dispatch(updateEvent(event))
+  startCreatingEvent: event => dispatch(startCreatingEvent(event)),
+  startUpdateEvent: event => dispatch(startUpdateEvent(event))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'eventForm', enableReinitialize: true, validate })(EventForm))

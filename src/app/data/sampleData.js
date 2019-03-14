@@ -3,7 +3,7 @@ const sampleData = {
     {
       id: '1',
       title: 'Trip to Tower of London',
-      date: '2018-03-27',
+      date: '2018-03-27T18:00:00',
       category: 'culture',
       description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in officia eaque ab vel, minus fuga voluptate asperiores veritatis numquam!',
       city: 'London, UK',
@@ -30,7 +30,7 @@ const sampleData = {
     {
       id: '2',
       title: 'Trip to the Colloseum',
-      date: '2018-03-27',
+      date: '2018-03-27T14:00:00',
       category: 'culture',
       description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in officia eaque ab vel, minus fuga voluptate asperiores veritatis numquam!',
       city: 'London, UK',

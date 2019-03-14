@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import ReduxToastr from 'react-redux-toastr'
 import 'semantic-ui-css/semantic.min.css'
 import configureStore from './app/store/configureStore'
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 import './index.css'
 import App from './app/layout/App'
 import * as serviceWorker from './serviceWorker'
@@ -14,7 +16,11 @@ store.dispatch(loadEvents())
 const root = document.getElementById('root')
 
 let render = () => {
-  ReactDOM.render(<Provider store={store}><App /></Provider>, root)
+  ReactDOM.render(
+  <Provider store={store}>
+    <ReduxToastr position='bottom-right' transitionIn='fadeIn' transitionOut='fadeOut' />
+    <App />
+  </Provider>, root)
 }
 
 if (module.hot) {
