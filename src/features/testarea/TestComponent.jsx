@@ -3,7 +3,7 @@ import Script from 'react-load-script'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
-import { incrementCounter, decrementCounter } from './testActions'
+import { incrementAsync, decrementAsync } from './testActions'
 import { openModal } from '../modals/modalActions'
 
 export class TestComponent extends React.Component {
@@ -39,7 +39,7 @@ export class TestComponent extends React.Component {
       onChange: this.onChange
     }
     
-    const { incrementCounter, decrementCounter, data, openModal } = this.props
+    const { incrementAsync, decrementAsync, data, openModal, loading } = this.props
     return (
       <div>
         <Script
@@ -47,8 +47,8 @@ export class TestComponent extends React.Component {
           onLoad={this.handleScriptLoad} 
         />
         <h1>{data}</h1>
-        <Button onClick={incrementCounter} color='green' content='Increment' />
-        <Button onClick={decrementCounter} color='red' content='Decrement' />
+        <Button onClick={incrementAsync} color='green' content='Increment' loading={loading} />
+        <Button onClick={decrementAsync} color='red' content='Decrement' loading={loading} />
         <Button onClick={() => openModal('TestModal', { data: 43 })} color='teal' content='Open Modal' />
         <br /><br />
         <form onSubmit={this.handleFormSubmit}>
@@ -61,12 +61,13 @@ export class TestComponent extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.test.data
+  data: state.test.data,
+  loading: state.test.loading
 })
 
 const mapDispatchToProps = {
-  incrementCounter,
-  decrementCounter,
+  incrementAsync,
+  decrementAsync,
   openModal
 }
 

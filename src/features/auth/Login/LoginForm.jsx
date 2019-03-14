@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { Form, Segment, Button } from 'semantic-ui-react'
 import { Field, reduxForm } from 'redux-form'
 import TextInput from '../../../app/common/form/TextInput'
-import { login } from '../authActions'
+import { startLogin } from '../authActions'
 
-export const LoginForm = props => (
-  <Form error size='large' onSubmit={props.handleSubmit(props.login)}>
+export const LoginForm = ({ handleSubmit, startLogin }) => (
+  <Form error size='large' onSubmit={handleSubmit(startLogin)}>
     <Segment>
       <Field name='email' component={TextInput} type='text' placeholder='Email address' />
       <Field name='password' component={TextInput} type='password' placeholder='password' />
@@ -16,7 +16,7 @@ export const LoginForm = props => (
 )
 
 const mapDispatchToProps = (dispatch, actions) => ({
-  login: credentials => dispatch(login(credentials))
+  startLogin: credentials => dispatch(startLogin(credentials))
 })
 
 export default connect(null, mapDispatchToProps)(reduxForm({ form: 'loginForm' })(LoginForm))

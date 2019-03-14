@@ -6,8 +6,10 @@ import configureStore from './app/store/configureStore'
 import './index.css'
 import App from './app/layout/App'
 import * as serviceWorker from './serviceWorker'
+import { loadEvents } from './features/events/eventActions'
 
 const store = configureStore()
+store.dispatch(loadEvents())
 
 const root = document.getElementById('root')
 

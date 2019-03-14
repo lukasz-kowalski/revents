@@ -1,8 +1,9 @@
 // import { createReducer } from '../../app/common/util/reducerUtil'
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './testConstants'
+import { INCREMENT_COUNTER, DECREMENT_COUNTER, COUNTER_ACTION_STARTED, COUNTER_ACTION_FINISH } from './testConstants'
 
 const initialState = {
-  data: 42
+  data: 42,
+  loading: false
 }
 
 // export const incrementCounter = (state, payload) => {        /Different way of dealing with reducers
@@ -24,6 +25,16 @@ const testReducer = (state = initialState, action) => {
       return {
         ...state,
         data: state.data - 1
+      }
+    case COUNTER_ACTION_STARTED:
+      return {
+        ...state,
+        loading: true
+      }
+    case COUNTER_ACTION_FINISH:
+      return {
+        ...state,
+        loading: false
       }
     default:
       return state
