@@ -8,19 +8,25 @@ import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 import './index.css'
 import App from './app/layout/App'
 import * as serviceWorker from './serviceWorker'
-import { loadEvents } from './features/events/eventActions'
 
 const store = configureStore()
-store.dispatch(loadEvents())
 
 const root = document.getElementById('root')
 
 let render = () => {
   ReactDOM.render(
-  <Provider store={store}>
-    <ReduxToastr position='bottom-right' transitionIn='fadeIn' transitionOut='fadeOut' />
-    <App />
-  </Provider>, root)
+    <Provider store={store}>
+      <React.Fragment>
+        <ReduxToastr
+          position="bottom-right"
+          transitionIn="fadeIn"
+          transitionOut="fadeOut"
+        />
+        <App />
+      </React.Fragment>
+    </Provider>,
+    root
+  )
 }
 
 if (module.hot) {
@@ -34,4 +40,4 @@ render()
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.register();
+serviceWorker.register()

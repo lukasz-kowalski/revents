@@ -5,7 +5,8 @@ const sampleData = {
       title: 'Trip to Tower of London',
       date: '2018-03-27T18:00:00',
       category: 'culture',
-      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in officia eaque ab vel, minus fuga voluptate asperiores veritatis numquam!',
+      description:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in officia eaque ab vel, minus fuga voluptate asperiores veritatis numquam!',
       city: 'London, UK',
       venue: "Tower of London, St Katherine's & Wapping, London",
       venueLatLng: {
@@ -32,7 +33,8 @@ const sampleData = {
       title: 'Trip to the Colloseum',
       date: '2018-03-27T14:00:00',
       category: 'culture',
-      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in officia eaque ab vel, minus fuga voluptate asperiores veritatis numquam!',
+      description:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente in officia eaque ab vel, minus fuga voluptate asperiores veritatis numquam!',
       city: 'London, UK',
       venue: "Tower of London, St Katherine's & Wapping, London",
       venueLatLng: {

@@ -104,3 +104,7 @@ body {
   padding-bottom: 0 !important;
   padding-left: 2em !important;
 }
+
+#root > div.ui.inverted.top.fixed.menu > div > div.right.item > div > div.menu.transition.visible {
+  z-index: 1000;
+}

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Modal } from 'semantic-ui-react'
 import { closeModal } from './modalActions'
 
-const mapDispatchToProps = (dispatch, actions) => ({
+const mapDispatchToProps = dispatch => ({
   closeModal: () => dispatch(closeModal())
 })
 

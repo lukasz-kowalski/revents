@@ -126,7 +126,7 @@ const mapStateToProps = (state, ownProps) => {
   return { initialValues: event }
 }
 
-const mapDispatchToProps = (dispatch, actions) => ({
+const mapDispatchToProps = dispatch => ({
   startCreatingEvent: event => dispatch(startCreatingEvent(event)),
   startUpdateEvent: event => dispatch(startUpdateEvent(event))
 })
