@@ -17,9 +17,9 @@ import AccountPage from './features/user/Settings/AccountPage'
 import TestComponent from './features/testarea/TestComponent'
 import ModalManager from './features/modals/ModalManager'
 
-const wrapInSettingsDashboard = Screen => props => {
+const wrapInSettingsDashboard = Component => props => {
   return (<SettingsDashboard>
-  <Screen {...props} />
+  <Component {...props} />
   </SettingsDashboard>);
 }
 

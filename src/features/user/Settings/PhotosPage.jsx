@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PhotosPage = () => {
+const PhotosPage = (props) => {
   return (
     <div>
       <h1>Photos Page</h1>
